@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.42ai.fr/wp-content/uploads/2020/04/White@4x.png" width="200" alt="42 AI Logo" />
+  <img src="https://github.com/42-AI/bootcamp_python/blob/master/assets/42ai_logo.png" width="200" alt="42 AI Logo" />
 </p>
 
 <h1 align="center">
