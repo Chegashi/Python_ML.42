@@ -38,23 +38,24 @@ sos = { 'a': '.-',
 		'9': '----.'
 	}
 
+if len(argv) == 1:
+	quit()
 string = ''
-
-argv = argv[1::]
-for word in argv:
-	string += ' ' + word
-string = string.lower()
+for word in argv[1::]:
+	string += word
 for char in string:
 	if (not char.isalpha() and not char.isdigit() and char != ' '):
-		print('ERROR')
-		break;
-	else:
-		for char in string:
-			if char != ' ':
-				print(sos[char], end=' ')
-			else :
-				print(' / ', end='')
-		print()
-# 	if (char == ' '):
-# 		print(' / ')
+		print('ERROR',)
+		quit()
+for word in argv[1::]:
+	for char in word:
+		if char == ' ':
+			print(' / ', end='')
+		else :
+			print(sos[char.lower()], end="")
+	if word != argv[len(argv) - 1]:
+		print(' / ', end='')
+print()
+	# 	if (char == ' '):
+	# 		print(' / ')
 	
