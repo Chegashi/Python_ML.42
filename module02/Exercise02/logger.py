@@ -2,9 +2,18 @@ import time
 from random import randint
 	
 def log(func):
+	file = open('machine.log', 'a')
+	old = time.time()
 	def wrappedFunc(*args, **kward):
-		print(func)
-		return wrappedFunc(*args, **kward)
+		string = str(func)
+		start = string.find('.') + 1
+		end = string[start:].find(' ')
+		func_name = string[start:start + end]
+		ret = func(*args, **kward)
+		txt = f"""(cmaxime)Running: %20s [ exec-time = %d]\n""", func_name, time.time() - old
+		file.write(str(txt))
+		return ret
+	return wrappedFunc
 
 class CoffeeMachine():
 	water_level = 100
@@ -39,8 +48,9 @@ class CoffeeMachine():
 if __name__ == "__main__":
 
     machine = CoffeeMachine()
-    for i in range(0, 2):
+    for i in range(0, 5):
     	machine.make_coffee()
 
     machine.make_coffee()
     machine.add_water(70)
+
