@@ -1,11 +1,14 @@
 import time
 from random import randint
-def log(func):
-	return func()
 	
+def log(func):
+	def wrappedFunc(*args, **kward):
+		print(func)
+		return wrappedFunc(*args, **kward)
+
 class CoffeeMachine():
 	water_level = 100
-	
+
 	@log
 	def start_machine(self):
 		if self.water_level > 20:
@@ -13,7 +16,7 @@ class CoffeeMachine():
 		else:
 			print("Please add water!")
 			return False
-	
+
 	@log
 	def boil_water(self):
 		return "boiling..."
@@ -33,13 +36,11 @@ class CoffeeMachine():
 		self.water_level += water_level
 		print("Blub blub blub...")
 
-
-
 if __name__ == "__main__":
 
     machine = CoffeeMachine()
-    for i in range(0, 5):
-        machine.make_coffee()
+    for i in range(0, 2):
+    	machine.make_coffee()
 
     machine.make_coffee()
     machine.add_water(70)
