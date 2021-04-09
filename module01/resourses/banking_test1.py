@@ -12,7 +12,22 @@ if __name__ == "__main__":
         'William John',
         zip='100-064',
         value=6460.0,
-        ref='58ba2b9954cd278eda8a84147ca73c87',
+        ref='58ba2b9954cd278eda8a84147ca73cclass CsvReader():
+    def __init__(self, filename=None, sep=',', header=False, skip_top=0, skip_bottom=0):
+        self.name = filename
+        self.sep = sep
+        self.header = header
+        self.skip_top = skip_top
+        self.skip_bottom = skip_bottom
+
+    def __enter__(self, data):
+        with open(self.name, 'w') as f:
+            str1 = self.sep.join([str(elm) for elm in data])
+            f.write('\n' + str)
+        f.close()
+
+    def __exit__(self):
+        return87',
         info=None,
         other='This is the vice president of the corporation'
     ))

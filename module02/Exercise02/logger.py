@@ -1,16 +1,25 @@
 import time
 from random import randint
-	
+
+file = open('machine.log', 'w')
+
 def log(func):
-	file = open('machine.log', 'a')
 	old = time.time()
 	def wrappedFunc(*args, **kward):
+		ret = func(*args, **kward)
+		timing = time.time() - old
+		if (timing > 1):
+			time_str = str(round(timing, 3)) + ' s '
+		else:
+			time_str = str(round(timing * 1000, +3)) + ' ms'
+		if timing < 10 :
+			time_str = ' ' + time_str
 		string = str(func)
 		start = string.find('.') + 1
 		end = string[start:].find(' ')
 		func_name = string[start:start + end]
-		ret = func(*args, **kward)
-		txt = f"""(cmaxime)Running: %20s [ exec-time = %d]\n""", func_name, time.time() - old
+		func_name += ' ' *( 25 - len(func_name))
+		txt = '(cmaxime)Running: ' + func_name + '[ exec-time = '+ time_str + ' ]\n'
 		file.write(str(txt))
 		return ret
 	return wrappedFunc
@@ -54,3 +63,19 @@ if __name__ == "__main__":
     machine.make_coffee()
     machine.add_water(70)
 
+file.close()class CsvReader():
+    def __init__(self, filename=None, sep=',', header=False, skip_top=0, skip_bottom=0):
+        self.name = filename
+        self.sep = sep
+        self.header = header
+        self.skip_top = skip_top
+        self.skip_bottom = skip_bottom
+
+    def __enter__(self, data):
+        with open(self.name, 'w') as f:
+            str1 = self.sep.join([str(elm) for elm in data])
+            f.write('\n' + str)
+        f.close()
+
+    def __exit__(self):
+        return
