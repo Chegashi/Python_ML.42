@@ -1,5 +1,7 @@
+import  numpy as np
+
 class ScrapBooker:
-	def __init():
+	def __init__(self):
 		pass
 
 	def crop(self, array, dimensions , position = [0,0]):
@@ -11,9 +13,13 @@ class ScrapBooker:
 	def thin(self, array, n, axis):
 		new_arr = np.array(array)
 		new_arr = new_arr.delete(array[n])
-		for i
+		new_arr = np.delete(array, 1, axis = 1)
+		return new_arr
+
 	def juxtapose(self, array, n, axis):
-		pass
-	
+		if axis:
+			return array[n]
+		return array[:,n]
+
 	def mosaic(self, array, dimensions):
 		pass

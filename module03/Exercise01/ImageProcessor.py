@@ -20,6 +20,4 @@ class ImageProcessor:
 
 
 imp = ImageProcessor()
-arr = imp.load("../resourses/1337_logo.jpeg")
-print(arr)
-imp.display(arr)
+arr = imp.load("../resourses/1337_bg.jpeg")
