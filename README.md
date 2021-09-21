@@ -39,3 +39,38 @@ No prior Python programming or Machine Learning experience is required! Your mis
 **Time to use a Python library that will allow you to manipulate dataframes.**
 > Pandas! And Bamboos! :panda_face:
 
+<h1 align="center">
+  Bootcamp Machine Learning
+</h1>
+<h3 align="center">
+  One week to learn basics in Machine Learning! :robot:
+</h3>
+<br/>
+
+
+### Table of Contents
+
+### Module05 - Stepping Into Machine Learning
+**Get started with some linear algebra and statistics**
+> Sum, mean, variance, standard deviation, vectors and matrices operations.  
+Hypothesis, model, regression, cost function. 
+
+### Module06 - Univariate Linear Regression
+**Implement a method to improve your model's performance: **gradient descent**, and discover the notion of normalization**
+> Gradient descent, linear regression, normalization.
+
+### Module07 - Multivariate Linear Regression
+**Extend the linear regression to handle more than one features, build polynomial models and detect overfitting**
+> Multivariate linear hypothesis, multivariate linear gradient descent, polynomial models.  
+Training and test sets, overfitting.
+
+### Module08 - Logistic Regression
+**Discover your first classification algorithm: logistic regression!**
+> Logistic hypothesis, logistic gradient descent, logistic regression, multiclass classification.  
+Accuracy, precision, recall, F1-score, confusion matrix.
+
+### Module09 - Regularization
+**Fight overfitting!**
+> Regularization, overfitting. Regularized cost function, regularized gradient descent.  
+Regularized linear regression. Regularized logistic regression.
+<br/>
