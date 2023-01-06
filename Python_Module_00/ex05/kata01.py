@@ -4,5 +4,5 @@ languages = {
     'PHP': 'Rasmus Lerdorf',
     }
 
-for language , creator in languages.items():
+for language, creator in languages.items():
     print(language, 'was created by', creator)

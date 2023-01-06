@@ -1,8 +1,13 @@
 from sys import argv
-import string
 
-if (len(argv) != 2 or not argv[1].isdigit()):
-    print("ERROR")
+if (len(argv) == 1):
+    exit(1)
+elif (len(argv) > 2):
+    print('AssertionError: more than one argument are provided')
+    exit(1)
+elif (not argv[1].isdigit()):
+    print('AssertionError: argument is not an integer')
+    exit(1)
 elif (int(argv[1]) == 0):
     print("I'm Zero.")
 elif (int(argv[1]) % 2 == 0):
