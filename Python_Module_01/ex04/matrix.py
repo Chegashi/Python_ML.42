@@ -34,6 +34,3 @@ class Matrix:
 			for j in range(0, self.shape[1]) :
 				S[i][j] -= self.data[i][j]
 		return Matrix(S)
-			
-			
-# v1 = Vector([0.0, 1.0, 2.0, 3.0])

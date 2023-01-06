@@ -34,5 +34,6 @@ class Bank(object):
         fix the corrupted account
         @account: int(id) or str(name) of the account
         @return
-        True if success, False if an error occured
+        True if succe   ss, False if an error occured
         """
+
