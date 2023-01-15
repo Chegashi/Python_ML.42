@@ -1,14 +1,19 @@
 1. Output a list of installed packages and their versions.
 	conda list
+	pip list
 
 2. Show the package metadata of numpy.
-	pip show numpy 
+	conda info numpy
+	pip show numpy
 
 3. Remove the package numpy.
+	conda uninstall numpy
 	pip3 uninstall numpy
 
 4. (Re)install the package numpy.
+	conda install numpy
 	pip install numpy
 
 5. Freeze the packages and their current versions in a requirements.txt file you have to turn-in.
+	conda list --export > requirements.txt
 	python3 -m pip freeze > requirements.txt

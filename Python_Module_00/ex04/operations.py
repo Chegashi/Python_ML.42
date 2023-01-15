@@ -5,15 +5,16 @@ if len(argv) == 1:
     print('Example:\n\tpython operations.py 10 3')
 elif len(argv) != 3:
     print('AssertionError: too many arguments')
-elif not argv[1].isdigit() or not argv[2].isdigit():
+elif not argv[1].lstrip('-+').replace('.', '', 1).isdigit() or \
+        not argv[2].replace('.', '', 1).lstrip('-+').isdigit():
     print('AssertionError: only integers')
 else:
-    print('Sum:\t\t', int(argv[1]) + int(argv[2]))
-    print('Difference:\t', int(argv[1]) - int(argv[2]))
-    print('Product:\t', int(argv[1]) * int(argv[2]))
-    if int(argv[2]) == 0:
+    print('Sum:\t\t', float(argv[1]) + float(argv[2]))
+    print('Difference:\t', float(argv[1]) - float(argv[2]))
+    print('Product:\t', float(argv[1]) * float(argv[2]))
+    if float(argv[2]) == 0:
         print('Quotient:    ERROR (div by zero')
         print('Remainder:   ERROR (modulo by zero)')
     else:
-        print('Quotient:\t', int(argv[1]) / int(argv[2]))
-        print('Remainder:\t', int(argv[1]) % int(argv[2]))
+        print('Quotient:\t', float(argv[1]) / float(argv[2]))
+        print('Remainder:\t', float(argv[1]) % float(argv[2]))

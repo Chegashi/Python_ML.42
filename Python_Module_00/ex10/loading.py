@@ -1,34 +1,21 @@
 import time
+import math
 
 
 def ft_progress(listy):
     lent = len(listy)
     old = time.time()
-    t = 0
+    eta = 0
     for i in listy:
         now = time.time() - old
-        prog = ((int((i/lent)*10) + 1)*'=')
-        prog = prog + ' ' * (10 - len(prog))
+        _prog = math.ceil(((abs(i - listy[0]) + 1) / lent) * 100)
+        prog_s = math.ceil(_prog / 2) * '='
+        prog_s += ' ' * (50 - len(prog_s))
         yield i
-        if (not t):
-            t = (time.time() - old) * (lent + 1)
-        print("ETA: %2.2fs [%3d%c] [%s>] %d/%d | elapsed time %2.2f"
-              % (t, int((i / lent) * 100) + 1, 37, prog, i + 1, lent, now),
-              end="\r")
+        if (not eta):
+            eta = (time.time() - old) * (lent - i + 1)
+        msg = "ETA: %2.2fs [%3d%c] [%s>] %d/%d | elapsed time %2.2f" % \
+            (eta, _prog, 37, prog_s, i + 1, lent, now)
+        print(msg, end='\r')
+    old = time.time()
 
-
-listy = range(1000)
-ret = 0
-for elem in ft_progress(listy):
-    ret += (elem + 3) % 5
-time.sleep(0.01)
-print()
-print(ret)
-
-listy = range(3333)
-ret = 0
-for elem in ft_progress(listy):
-    ret += elem
-    time.sleep(0.005)
-print()
-print(ret)
