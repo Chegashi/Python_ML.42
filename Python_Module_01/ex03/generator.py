@@ -1,13 +1,14 @@
 import random
 
 
-def generator(text, sep, option=None):
-    if (not isinstance(text, str)):
+def generator(text, sep, option=''):
+    if (not isinstance(text, str) or not len(text)
+            or not isinstance(option, str)):
         print("ERROR")
         li = []
         exit(1)
     li = text.split(sep)
-    if (not option):
+    if (option == ''):
         return li
     elif (option == "shuffle"):
         li_int = []
@@ -29,3 +30,6 @@ def generator(text, sep, option=None):
             if word not in liste:
                 liste.append(word)
         return liste
+    else:
+        print('ERROR')
+        return []

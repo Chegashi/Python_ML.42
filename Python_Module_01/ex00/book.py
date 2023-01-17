@@ -1,5 +1,4 @@
 import datetime
-from recipe import Recipe
 
 
 class Book:

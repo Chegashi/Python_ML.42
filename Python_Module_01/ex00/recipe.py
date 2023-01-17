@@ -1,6 +1,6 @@
 class Recipe:
     def __init__(self, name, cooking_lvl, cooking_time, ingredients,
-                 recipe_type, description=''):
+                 description, recipe_type):
         self.name = name
         self.cooking_lvl = cooking_lvl
         self.cooking_time = cooking_time
@@ -10,7 +10,7 @@ class Recipe:
         self.check()
 
     def check(self):
-        if (not isinstance(self.name, str)):
+        if (not isinstance(self.name, str) or not self.name):
             raise TypeError("Only str are allowed in name()")
         if (not isinstance(self.cooking_lvl, int)
                 or self.cooking_lvl not in range(1, 5)):
@@ -18,7 +18,8 @@ class Recipe:
         if (not isinstance(self.cooking_time, int) or self.cooking_time < 0):
             raise TabError("cooking_time(int) : \
                   in minutes (no negative numbers)")
-        if (not isinstance(self.ingredients, list)):
+        if (not isinstance(self.ingredients, list)
+                or len(self.ingredients) < 1):
             raise TabError("ingredients(list) : list of all ingredients ")
         for ing in self.ingredients:
             if (not isinstance(ing, str)):
@@ -33,10 +34,11 @@ class Recipe:
     def __str__(self):
         """Return the string to print with the recipe info"""
         txt = ""
-        txt += "name : " + self.name
-        txt += '\ncooking_lvl: ' + str(self.cooking_lvl)
-        txt += '\ncooking_time: ' + str(self.cooking_time)
-        txt += '\ningredients(list) ' + ' '.join(map(str, self.ingredients))
-        txt += '\ndescription: ' + str(self.description)
-        txt += '\nrecipe_type: ' + str(self.recipe_type)
+        txt += "name : {}".format(self.name)
+        txt += '\ncooking_lvl: {}'.format(self.cooking_lvl)
+        txt += '\ncooking_time: {}'.format(self.cooking_time)
+        txt += '\ningredients(list) {}'\
+            .format(' '.join(map(str, self.ingredients)))
+        txt += '\ndescription: {}'.format(self.description)
+        txt += '\nrecipe_type: {}'.format(self.recipe_type)
         return(txt)
