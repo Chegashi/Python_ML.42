@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.7
+
 import sys
 
 
@@ -23,11 +25,11 @@ def text_analyzer(texts=""):
                 nbr_space += 1
             elif not c.isdigit():
                 nbr_ponctuation += 1
-        print('The text contains characters:', len(texts))
-        print("- ", nbr_upper, " upper letters")
-        print("- ", nbr_lower, " lower letters")
-        print("- ", nbr_ponctuation, " punctuation marks")
-        print("- ", nbr_space, " spaces")
+        print('The text contains {} character(s):'.format(len(texts)))
+        print("- {}{}".format(nbr_upper, " upper letters"))
+        print("- {}{}".format(nbr_lower, " lower letters"))
+        print("- {}{}".format(nbr_ponctuation, " punctuation marks"))
+        print("- {}{}".format(nbr_space, " spaces"))
 
 
 if __name__ == "__main__":

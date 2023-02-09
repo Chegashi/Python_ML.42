@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.7
+
 cookbook = {
     'sandwich': (['ham', 'bread', 'cheese', 'tomatoes'], 'lunch', 10),
     'cake': (['flour', 'sugar', 'eggs'], 'dessert', 60),
@@ -47,9 +49,9 @@ def print_header():
 if __name__ == "__main__":
     print("Welcome to the Python Cookbook !")
     print_header()
-    while(1337):
+    while (1337):
         print("\nPlease select an option:")
-        n = input(">>")
+        n = input(">> ")
         if (not n.isdigit() or int(n) > 5 or int(n) < 1):
             print('Sorry, this option does not exist.')
             print_header()
@@ -64,7 +66,8 @@ if __name__ == "__main__":
             else:
                 print(name_recip, ' not found')
         elif (n == 3):
-            name_recip = input("recipe: ")
+            name_recip = \
+                input("Please enter a recipe name to get its details: \n>> ")
             if name_recip in cookbook:
                 print_recipe(name_recip)
             else:

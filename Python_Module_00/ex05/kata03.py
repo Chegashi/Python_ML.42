@@ -1,2 +1,4 @@
+#!/usr/bin/env python3.7
+
 phrase = "The right format"
-print("-" * (42 - len(phrase)) + phrase, end="")
+print('{}{}'.format('-' * (42 - len(phrase)), phrase), end='')

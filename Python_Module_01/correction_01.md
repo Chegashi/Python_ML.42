@@ -121,7 +121,7 @@ classes and the manipulation of the objects related to those classes.
     ```
     ```python
     from book import Book
-    from recipe import Recipe
+    from book import Book
     ```
   - ## Recipe:
     ```python

@@ -32,8 +32,9 @@ class Book:
             for recipe in self.recipes_list[typr_rec]:
                 if recipe.name == name:
                     print(recipe)
-                else:
                     return recipe
+        print("{} doesn't found")
+        return None
 
     def get_recipes_by_types(self, recipe_type):
         """Get all recipe names for a given recipe_type """

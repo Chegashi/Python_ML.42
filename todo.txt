@@ -1,5 +1,5 @@
-✖️:64       ✔️:17
-16/81       1/10
+✖️:60       ✔️:21
+18/81       2/10
 ✔️Python Module 00:
     Exercise 00:✅
     Exercise 01:✅
@@ -22,10 +22,10 @@
     Exercise 05:✅
 
 ✖️Python Module 02:
-    Exercise 00:❌
-    Exercise 01:❌
-    Exercise 02:❌
-    Exercise 03:❌
+    Exercise 00:✅
+    Exercise 01:✅
+    Exercise 02:✅
+    Exercise 03:✅
     Exercise 04:❌
     Exercise 05:❌
 
@@ -74,7 +74,7 @@
     Exercise 03:❌
     Exercise 04:❌
     Exercise 05:❌
-    Exercise 06:❌
+    Exercise 06:❌ 
     Exercise 07:❌
     Exercise 08:❌
     Exercise 09:❌

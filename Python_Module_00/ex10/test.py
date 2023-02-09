@@ -16,13 +16,13 @@ def test(X):
     ret = 0
     for elem in ft_progress(X):
         ret += (elem + 3) % 5
-    # sleep(0.01)
+    sleep(0.01)
     print()
     print(ret)
 
-for X in test_X:
-    print('\t', X)
-    # for x in tqdm(X):
-    #     pass
-    test(X)
+# for X in test_X:
+#     print('\t', X)
+#     # for x in tqdm(X):
+#     #     pass
+#     test(X)
 

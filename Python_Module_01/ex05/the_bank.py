@@ -18,6 +18,8 @@ class Account(object):
 
     def transfer(self, amount):
         self.value += amount
+    def transferTo(self, amount):
+        self.value -= amount
 
 
 class Bank(object):
@@ -39,37 +41,6 @@ class Bank(object):
         else:
             return False
 
-    def fix_account(self, account):
-        """ fix account associated to name if corrupted
-            @name:   str(name) of the account
-            @return  True if success, False if an error occured
-        """
-        if (account in self.accounts or not isinstance(account.name, str)):
-            return False
-        print(type(list(account.__dict__.keys())))
-        print(list(account.__dict__.keys()))
-        attributes = list(account.__dict__.keys())
-        Corrupted &= False if (len(attributes) % 2) else True
-        for attr in attributes:
-            Corrupted &= True if (attr[0] == 'b') else True
-        started_with = False
-        for attr in attributes:
-            if (attr.startswith('zip')):
-                started_with = True
-                break
-            if (attr.startswith('addr')):
-                started_with = True
-                break
-        Corrupted &= started_with
-        Corrupted &= 'name' in attributes
-        Corrupted &= 'id' in attributes
-        Corrupted &= 'value' in attributes
-        Corrupted &= isinstance(account.name, str)
-        Corrupted &= isinstance(account.id, int)
-        Corrupted &= isinstance(account.value, int) \
-            or isinstance(account.value, float)
-        return Corrupted
-
     def transfer(self, origin, dest, amount):
         """" Perform the fund transfer
             @origin:  str(name) of the first account
@@ -85,11 +56,89 @@ class Bank(object):
             if account.name == dest:
                 dest_account = account
         if origin_account is None or dest_account is None \
-                or origin_account.value < amount or origin_account.value < 0:
-            return False
-        if (self.isCorrupted(origin_account)
-                or self.isCorrupted(dest_account)):
+                or origin_account.value < amount or origin_account.value < 0 \
+                or self.isCorrupted(origin_account.name) \
+                or self.isCorrupted(dest_account.name):
             return(False)
-        origin_account.value -= amount
-        dest_account.value += amount
+        origin_account.transfer(amount)
+        dest_account.transferTo(amount)
         return True
+
+    def isCorrupted(self, account_name):
+        account = None
+        for iter in self.accounts:
+            if iter.name == account_name:
+                account = iter
+                break
+        if account is None:
+            print("Accompte not found")
+            return None
+        if len(account.__dict__) % 2 == 0:
+            return True
+        chekedlist = 0
+        for attr in list(account.__dict__.keys()):
+            if attr.startswith('b'):
+                return True
+            if attr.startswith('zip'):
+                chekedlist |= 1
+            if attr.startswith('addr'):
+                chekedlist |= 2
+            if attr == 'name':
+                chekedlist |= 4
+            if attr == 'id':
+                chekedlist |= 8
+            if attr == 'value':
+                chekedlist |= 16
+        if chekedlist != (1 | 2 | 4 | 8 | 16) :
+            return True
+        if not isinstance(account.name, str) or not isinstance(account.id, int) or \
+            (not isinstance(account.value, int) and not isinstance(account.value, float)):
+                return True
+        return False
+
+    def fix_account(self, account_name):
+        """ fix account associated to name if corrupted
+            @name:   str(name) of the account
+            @return  True if success, False if an error occured
+        """
+        account = None
+        print('0', self.accounts)
+        for iter in self.accounts:
+            print("1", iter.name, account_name)
+            if iter.name == account_name:
+                account = iter
+                break
+        if account is None:
+            print("Accompte not found")
+            return None
+        chekedlist = 0
+        for attr in account.__dict__:
+            if attr.startswith('b'):
+                delattr(self.attr)
+            if attr.startswith('zip'):
+                chekedlist |= 1
+            if attr.startswith('addr'):
+                chekedlist |= 2
+            if attr == 'name':
+                chekedlist |= 4
+            if attr == 'id':
+                chekedlist |= 8
+            if attr == 'value':
+                chekedlist |= 16
+        if chekedlist & 1 == 0:
+            setattr(account, 'zip', "QCobalHhiX")
+        if chekedlist & 2 == 0:
+            setattr(account, 'addr', "hzT1G75GWU")
+        if chekedlist & 4 == 0 or (chekedlist & 4 and \
+                                    not isinstance(account.name, str)):
+            setattr(account, 'name', "JdhuH970wv")
+        if chekedlist & 8 == 0 or (chekedlist & 8 and \
+                                   not isinstance(account.id, int)):
+            setattr(account, 'id', "061915120123")
+        if chekedlist & 16 == 0 or (chekedlist & 16 and \
+                                    not isinstance(account.value, int) \
+                or not isinstance(account.value, float)):
+            setattr(account, 'value', 1337)
+        if len(account.__dict__) % 2 == 0:
+            setattr(account, 'vini', 1337)
+        return account

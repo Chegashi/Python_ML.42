@@ -12,8 +12,10 @@ john = Account(
     lol = "hihi"
 )
 
-# bank.fix_account(john)
-# bank.fix_account('William John')
+bank.fix_account(john)
+bank.fix_account('William John')
+
+
 # john = Account(
 #    'William John',
 #    zip='100-064',

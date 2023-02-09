@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.7
+
 from sys import argv
 
 if (len(argv) != 3 or argv[1].isdigit() or not argv[2].isdigit()):

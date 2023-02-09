@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.7
+
 from sys import argv
 
 if len(argv) == 1:
@@ -9,12 +11,12 @@ elif not argv[1].lstrip('-+').replace('.', '', 1).isdigit() or \
         not argv[2].replace('.', '', 1).lstrip('-+').isdigit():
     print('AssertionError: only integers')
 else:
-    print('Sum:\t\t', float(argv[1]) + float(argv[2]))
-    print('Difference:\t', float(argv[1]) - float(argv[2]))
-    print('Product:\t', float(argv[1]) * float(argv[2]))
+    print('Sum:\t\t{:g}'.format(float(argv[1]) + float(argv[2])))
+    print('Difference:\t{:g}'.format(float(argv[1]) - float(argv[2])))
+    print('Product:\t{:g}'.format(float(argv[1]) * float(argv[2])))
     if float(argv[2]) == 0:
         print('Quotient:    ERROR (div by zero')
         print('Remainder:   ERROR (modulo by zero)')
     else:
-        print('Quotient:\t', float(argv[1]) / float(argv[2]))
-        print('Remainder:\t', float(argv[1]) % float(argv[2]))
+        print('Quotient:\t{:g}'.format(float(argv[1]) / float(argv[2])))
+        print('Remainder:\t{:g}'.format(float(argv[1]) % float(argv[2])))

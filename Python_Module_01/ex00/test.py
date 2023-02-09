@@ -15,19 +15,19 @@ b = Book("My seductive recipes")
 # # should be the same as the creation date or None
 crumble = Recipe("Crumble" , 1, 25, ["apples", "flour", "sugar"], "delicious", "dessert")
 b.add_recipe(crumble)
-# print(b.last_update)
-b.get_recipe_by_name("Crumble")
-# # should print the recipe
-# # AND
-# # <Recipe object at x>
+# # print(b.last_update)
+# b.get_recipe_by_name("Crumble")
+# # # should print the recipe
+# # # AND
+# # # <Recipe object at x>
 
-b.get_recipe_by_name("Liver Icecream")
+# b.get_recipe_by_name("Liver Icecream")
 # # The recipe does not exist
 # # The error must be handled in a justifiable manner
 # # such as returning None, [], or printing an error message
 
 print(b.get_recipes_by_types("dessert")[0])
 # Should print the Crumble recipe
-b.get_recipes_by_types("asdasd")
+# b.get_recipes_by_types("asdasd")
 # The recipe type does not exist, error must be handled in a justifiable manner
-# such as returning None, [], or printing an error message 
+# such as returning None, [], or printing an error message

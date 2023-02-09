@@ -37,6 +37,6 @@ from generator import generator
 # for word in generator(text, sep="si"):
     # print(word)
 
-text="0 1 2 3 4 5 6 7 8 9"
-for word in generator(text, sep=" ", option='shuffle'):
+text="0 1 3 3 4 5 6 7 8 9"
+for word in generator(text, sep=" ", option='unique'):
     print(word)

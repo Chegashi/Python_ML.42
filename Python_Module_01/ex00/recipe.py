@@ -36,9 +36,11 @@ class Recipe:
         txt = ""
         txt += "name : {}".format(self.name)
         txt += '\ncooking_lvl: {}'.format(self.cooking_lvl)
-        txt += '\ncooking_time: {}'.format(self.cooking_time)
-        txt += '\ningredients(list) {}'\
+        txt += '\ncooking_time: {} minutes'.format(self.cooking_time)
+        txt += '\ningredients(list): {}'\
             .format(' '.join(map(str, self.ingredients)))
         txt += '\ndescription: {}'.format(self.description)
         txt += '\nrecipe_type: {}'.format(self.recipe_type)
+        txt += '\nRecipe {} at {}'.format(self.name, self.recipe_type)
+        
         return(txt)

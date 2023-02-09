@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.7
+
 languages = {
     'Python': 'Guido van Rossum',
     'Ruby': 'Yukihiro Matsumoto',
