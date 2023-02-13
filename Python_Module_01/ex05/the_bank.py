@@ -15,12 +15,39 @@ class Account(object):
             raise AttributeError("Attribute value cannot be negative.")
         if not isinstance(self.name, str):
             raise AttributeError("Attribute name must be a str object.")
+        if self.isCorrupted():
+            print("the following account is corrupted you can't use it")
+        else:
+            print("the following account is not corrupted you can use' it")
 
     def transfer(self, amount):
         self.value += amount
     def transferTo(self, amount):
         self.value -= amount
 
+    def isCorrupted(self):
+        if len(self.__dict__) % 2 == 0:
+            return True
+        chekedlist = 0
+        for attr in list(self.__dict__.keys()):
+            if attr.startswith('b'):
+                return True
+            if attr.startswith('zip'):
+                chekedlist |= 1
+            if attr.startswith('addr'):
+                chekedlist |= 2
+            if attr == 'name':
+                chekedlist |= 4
+            if attr == 'id':
+                chekedlist |= 8
+            if attr == 'value':
+                chekedlist |= 16
+        if chekedlist != (1 | 2 | 4 | 8 | 16) :
+            return True
+        if not isinstance(self.name, str) or not isinstance(self.id, int) or \
+            (not isinstance(self.value, int) and not isinstance(self.value, float)):
+                return True
+        return False
 
 class Bank(object):
     """The bank"""
@@ -57,44 +84,12 @@ class Bank(object):
                 dest_account = account
         if origin_account is None or dest_account is None \
                 or origin_account.value < amount or origin_account.value < 0 \
-                or self.isCorrupted(origin_account.name) \
-                or self.isCorrupted(dest_account.name):
+                or not origin_account.isCorrupted() \
+                or not dest_account.isCorrupted():
             return(False)
-        origin_account.transfer(amount)
-        dest_account.transferTo(amount)
+        origin_account.value -= amount
+        dest_account.value += amount
         return True
-
-    def isCorrupted(self, account_name):
-        account = None
-        for iter in self.accounts:
-            if iter.name == account_name:
-                account = iter
-                break
-        if account is None:
-            print("Accompte not found")
-            return None
-        if len(account.__dict__) % 2 == 0:
-            return True
-        chekedlist = 0
-        for attr in list(account.__dict__.keys()):
-            if attr.startswith('b'):
-                return True
-            if attr.startswith('zip'):
-                chekedlist |= 1
-            if attr.startswith('addr'):
-                chekedlist |= 2
-            if attr == 'name':
-                chekedlist |= 4
-            if attr == 'id':
-                chekedlist |= 8
-            if attr == 'value':
-                chekedlist |= 16
-        if chekedlist != (1 | 2 | 4 | 8 | 16) :
-            return True
-        if not isinstance(account.name, str) or not isinstance(account.id, int) or \
-            (not isinstance(account.value, int) and not isinstance(account.value, float)):
-                return True
-        return False
 
     def fix_account(self, account_name):
         """ fix account associated to name if corrupted
@@ -102,22 +97,23 @@ class Bank(object):
             @return  True if success, False if an error occured
         """
         account = None
-        print('0', self.accounts)
         for iter in self.accounts:
-            print("1", iter.name, account_name)
+            #print("1", iter.name, account_name)
             if iter.name == account_name:
                 account = iter
                 break
         if account is None:
-            print("Accompte not found")
+            print("fix_account ====> Accompte not found")
             return None
         chekedlist = 0
+        b = None
         for attr in account.__dict__:
             if attr.startswith('b'):
-                delattr(self.attr)
+                b = attr
             if attr.startswith('zip'):
                 chekedlist |= 1
-            if attr.startswith('addr'):
+            if attr.startswith(
+                'addr'):
                 chekedlist |= 2
             if attr == 'name':
                 chekedlist |= 4
@@ -125,6 +121,8 @@ class Bank(object):
                 chekedlist |= 8
             if attr == 'value':
                 chekedlist |= 16
+        if b :
+            delattr(account, b)
         if chekedlist & 1 == 0:
             setattr(account, 'zip', "QCobalHhiX")
         if chekedlist & 2 == 0:

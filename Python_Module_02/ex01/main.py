@@ -10,11 +10,9 @@ def what_are_the_vars(*kid, **kargs):
         i += 1
     return obj
 
-
 class ObjectC(object):
     def __init__(self):
         pass
-
 
 class object():
     def __init__(self):
@@ -32,7 +30,6 @@ def doom_printer(obj):
             print("{}: {}".format(attr, value))
     print("end")
 
-
 if __name__ == "__main__":
     # obj = what_are_the_vars(7)
     # doom_printer(obj)
@@ -46,12 +43,6 @@ if __name__ == "__main__":
     # doom_printer(obj)
     # obj = what_are_the_vars(42, a=10, var_0="world")
     # doom_printer(obj)
-    # obj = what_are_the_vars(42, "Yes", a=10, var_2="world")
-    # doom_printer(obj)
+    obj = what_are_the_vars(42, "Yes", a=10, var_2="world")
+    doom_printer(obj)
 
-    obj = what_are_the_vars(None)
-    doom_printer(obj)
-    obj = what_are_the_vars(lambda x: x, function=what_are_the_vars)
-    doom_printer(obj)
-    obj = what_are_the_vars(3, var_0=2)
-    doom_printer(obj)

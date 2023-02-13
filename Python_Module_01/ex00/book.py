@@ -33,7 +33,7 @@ class Book:
                 if recipe.name == name:
                     print(recipe)
                     return recipe
-        print("{} doesn't found")
+        print("{} doesn't found".format(name))
         return None
 
     def get_recipes_by_types(self, recipe_type):

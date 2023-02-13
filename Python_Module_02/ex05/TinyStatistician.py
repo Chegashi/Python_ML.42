@@ -1,4 +1,4 @@
- from math import  sqrt
+from math import  sqrt
 
 class TinyStatistician():
     def __init__(self, data):
