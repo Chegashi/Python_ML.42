@@ -1,5 +1,4 @@
-✖️:60       ✔️:21
-18/81      02/10
+✖️❌59❌✖️
 
 Python Module{
     Python Module 01:
@@ -15,8 +14,8 @@ Python Module{
     Exercise 01:✅
     Exercise 02:✅
     Exercise 03:✅
-    Exercise 04:❌
-    Exercise 05:❌
+    Exercise 04:✅
+    Exercise 05:✅
 
 ✖️Python Module 03:
     Exercise 00:❌
