@@ -12,4 +12,3 @@ def ft_filter(function_to_apply, iterable):
     if not hasattr(function_to_apply, "__call__"):
         return None
     return (iter for iter in iterable if function_to_apply(iter))
-

@@ -9,31 +9,35 @@ class CsvReader():
         self.sep = sep
         self.skip_top = skip_top
         self.skip_bottom = skip_bottom
-        self.data = []
-        self.header = []
+        self.data = None
+        self.header = None
         if os.path.isfile(filename):
             self.file_obj = open(filename, 'r')
             lines = self.file_obj.readlines()
             lines = list(map(lambda x: x.replace('\n', ''), lines))
             li = []
+            _len = 0
             for i in lines:
                 li.append([i])
+                if i != lines[0] and _len != len(i.split(sep)):
+                    self.file_obj = None
+                    return None
+                _len = len(list(filter(None, i.split(sep))))
             if header:
                 self.header = li[0]
-                li = li[2:]
+                li = li[1:]
             if (skip_top):
                 li = li[skip_top:]
             if (skip_bottom):
                 li = li[:-skip_bottom]
-            self.data = li
-            print(self.header)
-            print(self.data)
+            self.data = li if li else None
         else:
             self.file_obj = None
 
     def __enter__(self):
         if (self.file_obj):
             return self
+        pass
 
     def __exit__(self, type, value, traceback):
         if (self.file_obj):
@@ -41,6 +45,8 @@ class CsvReader():
 
     def getheader(self):
         return self.header
+        # pass
 
     def getdata(self):
         return self.data
+        # pass

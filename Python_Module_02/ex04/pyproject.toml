@@ -1,17 +1,18 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
 [project]
-name = "my_minipack"
-version = "13.37.42"
+name = "my-minipack"
+version = "0.0.1"
 authors = [
-  { name="mochegri", email="mochegri@student.1337.ma" },
+  { name="my-minipack" },
 ]
-description = "You can ensure whether the package was properly installed by running the command pip list that displays the list of installed packages and check the metadata of the package with pip show -v my_minipack. Of course do not reproduce the exact same metadata, change the author information, modify the summary Topic and Audience items if you want to"
+description = "A small example package"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.0"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
