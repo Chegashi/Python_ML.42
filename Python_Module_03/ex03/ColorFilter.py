@@ -20,10 +20,6 @@ class ColorFilter:
         """
         try:
             new_arr = 255 - array
-            # print(array)÷
-            # for i in array:
-            #     for j in i:
-            #         print(i)
             return new_arr
         except:
             return None
@@ -113,22 +109,13 @@ class ColorFilter:
         -------
         This function should not raise any Exception.
         """
-        gray = np.mean(array, axis=-1)
-        # Define the number of levels or thresholds
-        levels = 4
-
-        # Compute the bin boundaries for each level
-        bins = np.linspace(0, 1, levels + 1)
-
-        # Apply the binning to the grayscale image
-        indices = np.digitize(gray, bins)
-
-        # Map the indices to colors or shades
-        colors = (indices - 1) / (levels - 1)
-
-        # Stack the color channels to get a 3D output image
-        output = np.stack([colors] * 3, axis=-1)
-        return output
+        midpoints = [0, 85, 170, 255]
+        intervals = [(0, 64), (64, 128), (128, 192), (192, 256)]
+        interval_min = min(0, 64)
+        interval_max = max(0, 64)
+        # image[ (image > interval_min) & (image <= interjjval_max)] = 3amerhom b the appropriate midpoints
+        # 0, 64 = >
+        # (64, 128) => 85 
 
     def to_grayscale(self, array, filter, **kwargs):
         """
@@ -149,4 +136,11 @@ class ColorFilter:
         -------
         This function should not raise any Exception.
         """
-        pass
+        grayscale_array = np.copy(array)
+        if filter == 'mean' or filter == 'm':
+            # rgb2gray converts RGB values to grayscale values by forming a weighted sum of the R, G, and B components: 0.2989 * R + 0.5870 * G + 0.1140 * B 
+            Ylinear = [0.2989, 0.5870, 0.1140] # Gray
+            grayscale_array = np.sum(grayscale_array[...,:3] * Ylinear, axis=-1)
+        elif filter == 'weight' or filter == 'w':
+            grayscale_array = np.sum(grayscale_array[...,:3] * kwargs['weights'], axis=-1)
+        return grayscale_array

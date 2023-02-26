@@ -21,3 +21,4 @@ class FileLoader:
             print(df.head(n))
         else:
             print(df.tail(-1*n))
+

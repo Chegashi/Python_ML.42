@@ -26,11 +26,11 @@ Python Module{
         Exercise 04:❌
 
     ✖️Python Module 04:
-        Exercise 00:❌
-        Exercise 01:❌
-        Exercise 02:❌
-        Exercise 03:❌
-        Exercise 04:❌
+        Exercise 00:✅
+        Exercise 01:✅
+        Exercise 02:✅
+        Exercise 03:✅
+        Exercise 04:✅
         Exercise 05:❌
         Exercise 06:❌
         Exercise 07:❌

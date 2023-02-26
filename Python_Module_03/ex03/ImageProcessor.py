@@ -20,6 +20,5 @@ class ImageProcessor:
             return None
 
     def display(self, arr):
-        # if arr != None:
         img = Image.fromarray(arr)
         img.show('new_img.png')
