@@ -1,5 +1,5 @@
 class GotCharacter:
-    """A class representing the Stark family.\
+    """A class representing the GotCharacter family.\
  Or when bad things happen to good people."""
 
     def __init__(self, first_name=None, is_alive=True):

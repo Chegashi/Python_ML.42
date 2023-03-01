@@ -4,8 +4,9 @@ import datetime
 class Book:
     def __init__(self, name):
         self.name = name
-        self.last_update = datetime.datetime.now()
-        self.creation_date = datetime.datetime.now()
+        date = datetime.datetime.now()
+        self.last_update = date
+        self.creation_date = date
         self.recipes_list = {
             "starter": [],
             "lunch": [],
