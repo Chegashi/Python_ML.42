@@ -22,7 +22,7 @@ from generator import generator
 # for word in generator(text, sep="."):
 #     print(word)
 
-# text="This is a simple string for a basic test. Very simple."
+text="This is a simple string for a basic test. Very simple."
 
 
 # for word in generator(text, sep=" "):
@@ -35,21 +35,21 @@ from generator import generator
 #     print(word)
 
 # for word in generator(text, sep="si"):
-    # print(word)
+#     print(word)
 
 # text="0 1 3 3 4 5 6 7 8 9"
 # for word in generator(text, sep=" ", option='unique'):
 #     print(word)
 
-txt="This is a simple string for a basic test. Very simple."
-for elem in generator(txt, sep=' '):
-    print(elem)
+# txt="This is a simple string for a basic test. Very simple."
+# for elem in generator(txt, sep=' '):
+#     print(elem)
 
-for elem in generator(txt, sep='.'):
-    print(elem)
+# for elem in generator(txt, sep='.'):
+#     print(elem)
 
-for elem in generator(txt, sep='i'):
-    print(elem)
+# for elem in generator(txt, sep='i'):
+#     print(elem)
 
-for elem in generator(txt, sep='si'):
-    print(elem)
+# for elem in generator(txt, sep='si'):
+#     print(elem)

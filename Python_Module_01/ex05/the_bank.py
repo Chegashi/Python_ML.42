@@ -18,12 +18,17 @@ class Account(object):
         if self.isCorrupted():
             print("the following account is corrupted you can't use it")
         else:
-            print("the following account is not corrupted you can use' it")
+            print("the {} account is not corrupted you can use it".format(self.name))
 
     def transfer(self, amount):
         self.value += amount
+        print("Virement recu d'un montant de amount "
+              "{} MAD de la part de {}.".format(amount, self.name))
+
     def transferTo(self, amount):
         self.value -= amount
+        print("Le virement d'un montant de "
+              "{} MAD en faveur de {} a bien ete traite".format(amount, self.name))
 
     def isCorrupted(self):
         if len(self.__dict__) % 2 == 0:
@@ -87,24 +92,15 @@ class Bank(object):
                 or not origin_account.isCorrupted() \
                 or not dest_account.isCorrupted():
             return(False)
-        origin_account.value -= amount
-        dest_account.value += amount
+        origin_account.transferTo(amount)
+        dest_account.transfer(amount)
         return True
 
-    def fix_account(self, account_name):
+    def fix_account(self, account):
         """ fix account associated to name if corrupted
             @name:   str(name) of the account
             @return  True if success, False if an error occured
         """
-        account = None
-        for iter in self.accounts:
-            #print("1", iter.name, account_name)
-            if iter.name == account_name:
-                account = iter
-                break
-        if account is None:
-            print("fix_account ====> Accompte not found")
-            return None
         chekedlist = 0
         b = None
         for attr in account.__dict__:
@@ -139,4 +135,5 @@ class Bank(object):
             setattr(account, 'value', 1337)
         if len(account.__dict__) % 2 == 0:
             setattr(account, 'vini', 1337)
+        print("the {} account is not corrupted you can use it".format(account.name))
         return account
