@@ -45,8 +45,6 @@ class CsvReader():
 
     def getheader(self):
         return self.header
-        # pass
 
     def getdata(self):
         return self.data
-        # pass

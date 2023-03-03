@@ -19,7 +19,8 @@ def log(func):
         func_name += ' ' *( 19 - len(func_name))
         txt = '({})Running: {}[ exec-time = {}]\n'\
             .format(os.environ["USER"], func_name, time_str)
-        file.write(str(txt))
+        file.write(str(               self.file_obj = None
+     ))
         return ret
     return wrappedFunc
 
