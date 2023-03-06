@@ -109,13 +109,14 @@ class ColorFilter:
         -------
         This function should not raise any Exception.
         """
-        midpoints = [0, 85, 170, 255]
-        intervals = [(0, 64), (64, 128), (128, 192), (192, 256)]
-        interval_min = min(0, 64)
-        interval_max = max(0, 64)
-        # image[ (image > interval_min) & (image <= interjjval_max)] = 3amerhom b the appropriate midpoints
-        # 0, 64 = >
-        # (64, 128) => 85 
+        cell = array.copy()
+        for i in range(len(array)):
+            for j in range(len(i)):
+                for k in range(len(j)):
+                    value = array[i][j][k] * 0.5
+                    cell[i][j][k] = min(255, value + cell[i][j][k])
+                    
+
 
     def to_grayscale(self, array, filter, **kwargs):
         """
@@ -136,11 +137,8 @@ class ColorFilter:
         -------
         This function should not raise any Exception.
         """
-        grayscale_array = np.copy(array)
+        grayscale = np.copy(array)
         if filter == 'mean' or filter == 'm':
-            # rgb2gray converts RGB values to grayscale values by forming a weighted sum of the R, G, and B components: 0.2989 * R + 0.5870 * G + 0.1140 * B 
-            Ylinear = [0.2989, 0.5870, 0.1140] # Gray
-            grayscale_array = np.sum(grayscale_array[...,:3] * Ylinear, axis=-1)
+            return np.sum(grayscale[...,:3] * [0.2989, 0.5870, 0.1140], axis=-1)
         elif filter == 'weight' or filter == 'w':
-            grayscale_array = np.sum(grayscale_array[...,:3] * kwargs['weights'], axis=-1)
-        return grayscale_array
+            return np.sum(grayscale[...,:3] * kwargs['weights'], axis=-1)
