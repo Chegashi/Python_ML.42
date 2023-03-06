@@ -6,26 +6,35 @@ class NumPyCreator:
 
     def from_list(self, lst):
         try:
-            return np.array(lst, dtype='<U21')
+            if not isinstance(lst, list):
+                return None
+            if len(lst) > 1:
+                for vect in lst:
+                    if isinstance(vect, list) and len(lst[0]) != len(vect):
+                        return None
+            np_arr = np.array(lst)
+            return np_arr
         except:
             return None
 
     def from_tuple(self, tpl):
         try:
-            if not isinstance(tpl, tuple):
+            if not isinstance(tpl, tuple) or (isinstance(tpl[0], tuple)):
                 return None
-            arr = np.array(tpl, dtype='<U1')
-            return arr
+            tuple_np = np.array(tpl)
+            return tuple_np
         except:
             return None
 
     def from_iterable(self, itr):
         try:
-            lst = []
-            for items in itr:
-                lst.append(items)
-            arr = np.array(lst)
-            return arr
+            if len(itr) > 1:
+                for vect in itr:
+                    if isinstance(vect, list)\
+                        and len(itr[0]) != len(vect):
+                        return None
+            np_arr = np.array(itr)
+            return np_arr
         except:
             return None
 
@@ -33,12 +42,16 @@ class NumPyCreator:
         try:
             if not isinstance(shape, tuple):
                 return None
-            arr = np.array([value] * shape[0][0] * shape[0][1], dtype='f')
-            arr = arr.reshape(shape[0][0], shape[0][1])
-            return arr
+            arr = np.array([value] * shape[0][0] * shape[0][1]).reshape(shape[0][0], shape[0][1])
+            for vect in arr:
+                if isinstance(vect, list)\
+                    and len(arr[0]) != len(vect):
+                        return None
+            np_arr = np.array(arr)
+            return np_arr
         except:
             return None
-
+    
     def random(self, *shape):
         try:
             lst = []
@@ -51,27 +64,7 @@ class NumPyCreator:
 
     def identity(self, n):
         try:
-            arr = np.identity(n, dtype=type(n))
+            arr = np.identity(n)
             return arr
         except:
             return None
-
-# npc = NumPyCreator()
-
-# print(npc.from_list("toto"))
-# print("Shoud Output:\nNone\n\n")
-
-# print(npc.from_list([[1,2,3],[6,3,4],[8,5,6,7]]))
-# print("Shoud Output:\nNone\n\n")
-
-# print(npc.from_tuple(3.2))
-# print("Shoud Output:\nNone\n\n")
-
-# print(npc.from_tuple(((1,5,8),(7,5))))
-# print("Shoud Output:\nNone\n\n")
-
-# print(npc.from_shape((-1, -1)))
-# print("Shoud Output:\nNone\n\n")
-
-# print(npc.identity(-1))
-# print("Shoud Output:\nNone\n\n")
