@@ -1,4 +1,4 @@
-# Module 03 - Numpy
+†# Module 03 - Numpy
 
 ## Comment:
 This fourth module is the evolution of two original projects created by the

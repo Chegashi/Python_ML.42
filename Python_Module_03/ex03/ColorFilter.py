@@ -115,8 +115,6 @@ class ColorFilter:
                 for k in range(len(j)):
                     value = array[i][j][k] * 0.5
                     cell[i][j][k] = min(255, value + cell[i][j][k])
-                    
-
 
     def to_grayscale(self, array, filter, **kwargs):
         """
