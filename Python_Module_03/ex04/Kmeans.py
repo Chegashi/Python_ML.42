@@ -59,7 +59,7 @@ class KmeansClustering:
 			for j in range(3):
 				mean[j,i] = x[x[:,3] == i][:,j].mean()
 		mean_tmp = mean
-		labal = {np.argmax(mean_tmp[0,:]): 'Asteroids’ Belt colonies'}
+		labal = {np.argmax(mean_tmp[0,:]): 'Asteroids Belt colonies'}
 		mean_tmp = np.delete(mean_tmp, np.argmax(mean_tmp[0,:]), axis=1)
 		labal.update({np.where(max(mean_tmp[1,:]) == mean)[1][0]: 'The flying cities of Venus'})
 		mean_tmp = np.delete(mean, list(labal.keys()) , axis=1)
@@ -91,6 +91,7 @@ def main(*arg, **kwarg):
 		x = np.delete(x, 0, 1)
 		x = np.delete(x, 0, 0)
 		kmeans.predict(x)
+		print(kmeans.centroids)
 	except:
 		print("Erreur")
 		exit(1)
