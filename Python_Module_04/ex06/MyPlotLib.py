@@ -3,11 +3,15 @@ import pandas as pd
 
 class MyPlotLib:
     def histogram(self, data, features):
-        figure, axis = plt.subplots(1, len(features))
-        for i in range(len(features)):
-                axis[i].hist(data[features[i]])
-                axis[i].set_title(features[i])
-        figure.tight_layout()
+        if len(features) == 1:
+            plt.hist(data[features[0]])
+            plt.title(features[0])
+        else :
+            figure, axis = plt.subplots(1,len(features))
+            for i in range(len(features)):
+                    axis[i].hist(data[features[i]])
+                    axis[i].set_title(features[i])
+            figure.tight_layout()
         plt.show()
 
     def density(self, data, features):
